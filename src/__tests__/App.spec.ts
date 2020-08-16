@@ -38,34 +38,34 @@ describe('App', () => {
 
   it('should be able to create a new customer', async () => {
     const response = await request(app).post('/customers').send({
-      name: 'Rocketseat',
-      email: 'oi@rocketseat.com.br',
+      name: 'Joseph Oliveira',
+      email: 'oi@josepholiveira.dev',
     });
 
     expect(response.body).toEqual(
       expect.objectContaining({
-        name: 'Rocketseat',
-        email: 'oi@rocketseat.com.br',
+        name: 'Joseph Oliveira',
+        email: 'oi@josepholiveira.dev',
       }),
     );
   });
 
   it('should not be able to create a customer with one e-mail thats already registered', async () => {
     const customer = await request(app).post('/customers').send({
-      name: 'Rocketseat',
-      email: 'oi@rocketseat.com.br',
+      name: 'Joseph Oliveira',
+      email: 'oi@josepholiveira.dev',
     });
 
     expect(customer.body).toEqual(
       expect.objectContaining({
-        name: 'Rocketseat',
-        email: 'oi@rocketseat.com.br',
+        name: 'Joseph Oliveira',
+        email: 'oi@josepholiveira.dev',
       }),
     );
 
     const response = await request(app).post('/customers').send({
-      name: 'Rocketseat',
-      email: 'oi@rocketseat.com.br',
+      name: 'Joseph Oliveira',
+      email: 'oi@josepholiveira.dev',
     });
 
     expect(response.status).toBe(400);
@@ -87,7 +87,7 @@ describe('App', () => {
     );
   });
 
-  it('should not be able to create a duplicated product', async () => {
+  it('should not be able to create a customer with one e-mail thats already registered', async () => {
     const product = await request(app).post('/products').send({
       name: 'Produto 01',
       price: 500,
@@ -119,8 +119,8 @@ describe('App', () => {
     });
 
     const customer = await request(app).post('/customers').send({
-      name: 'Rocketseat',
-      email: 'oi@rocketseat.com.br',
+      name: 'Joseph Oliveira',
+      email: 'oi@josepholiveira.dev',
     });
 
     const response = await request(app)
@@ -139,8 +139,8 @@ describe('App', () => {
       expect.objectContaining({
         customer: expect.objectContaining({
           id: customer.body.id,
-          name: 'Rocketseat',
-          email: 'oi@rocketseat.com.br',
+          name: 'Joseph Oliveira',
+          email: 'oi@josepholiveira.dev',
         }),
         order_products: expect.arrayContaining([
           expect.objectContaining({
@@ -163,8 +163,8 @@ describe('App', () => {
 
   it('should not be able to create an order with invalid products', async () => {
     const customer = await request(app).post('/customers').send({
-      name: 'Rocketseat',
-      email: 'oi@rocketseat.com.br',
+      name: 'Joseph Oliveira',
+      email: 'oi@josepholiveira.dev',
     });
 
     const response = await request(app)
@@ -181,10 +181,10 @@ describe('App', () => {
     expect(response.status).toEqual(400);
   });
 
-  it('should not be able to create an order with products with insufficient quantities', async () => {
+  it('should not be able to create an order with products with invalid quantities', async () => {
     const customer = await request(app).post('/customers').send({
-      name: 'Rocketseat',
-      email: 'oi@rocketseat.com.br',
+      name: 'Joseph Oliveira',
+      email: 'oi@josepholiveira.dev',
     });
 
     const product = await request(app).post('/products').send({
@@ -212,8 +212,8 @@ describe('App', () => {
     const productsRepository = getRepository(Product);
 
     const customer = await request(app).post('/customers').send({
-      name: 'Rocketseat',
-      email: 'oi@rocketseat.com.br',
+      name: 'Joseph Oliveira',
+      email: 'oi@josepholiveira.dev',
     });
 
     const product = await request(app).post('/products').send({
@@ -265,8 +265,8 @@ describe('App', () => {
 
   it('should be able to list one specific order', async () => {
     const customer = await request(app).post('/customers').send({
-      name: 'Rocketseat',
-      email: 'oi@rocketseat.com.br',
+      name: 'Joseph Oliveira',
+      email: 'oi@josepholiveira.dev',
     });
 
     const product = await request(app).post('/products').send({
@@ -293,8 +293,8 @@ describe('App', () => {
       expect.objectContaining({
         customer: expect.objectContaining({
           id: customer.body.id,
-          name: 'Rocketseat',
-          email: 'oi@rocketseat.com.br',
+          name: 'Joseph Oliveira',
+          email: 'oi@josepholiveira.dev',
         }),
         order_products: expect.arrayContaining([
           expect.objectContaining({
